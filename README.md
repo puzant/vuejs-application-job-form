@@ -1,6 +1,6 @@
 # job-application-form
 
-![project-image](src/assets/preb-1.png)
+![project-image](src/assets/prev-1.png)
 ![project-image](src/assets/prev-2.png)
 
 ## Project setup
