@@ -282,4 +282,25 @@ input[type="file"]
   padding: 20px
   &:hover 
     cursor: pointer
+
+//  media queries to make the form responsive 
+@media only screen and (max-width: 890px) 
+  .apply-job-dialog
+    width: auto
+  .user-enter-data-container
+    display: flex 
+    flex-direction: column
+    flex-wrap: wrap
+
+  .user-input-container
+  
+  .user-input,
+  .user-input-location
+    width: 90%
+
+  .attatch-files-container
+    display: flex
+    width: 100%
+    flex-direction: row
+    justify-content: space-around
 </style>
