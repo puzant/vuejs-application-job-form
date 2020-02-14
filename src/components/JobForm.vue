@@ -110,7 +110,19 @@ export default class JobForm extends Vue {
     }
   }
 
-
+  submitDataToServer() {
+    axios.post('https://some url goes here', {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      location: this.location,
+      phoneNumber: this.phoneNumber
+    }).then(response => {
+      console.log('done')
+    }).catch(e => {
+      console.log('there was an error')
+    })
+  }
 
   closeForm() {
     this.showForm = false
