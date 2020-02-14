@@ -1,20 +1,64 @@
 <template lang="pug">
+transition( name="fade" )
+  .apply-job-dialog( v-if="showForm" ref="apply-job-container" )
+    .apply-job-title-and-close-button
+      .apply-job-title-text
+        | APPLY FOR THIS JOB
+      .close-button( @click="closeForm" )
+        img( src="https://img.icons8.com/ios-filled/50/000000/close-window.png" )
+    .user-enter-data-container
+      .user-input-container
+        span.input-title FIRST NAME 
         span.requried-field *
-        .attach-cv-button Attach
-        .empty-field-notice( v-if="rsumeFieldIsEmpty" ) Hmmm, no CV!
-
-      
-      .resume-cv-button
-        input( type="file" )
-        span.cv-button-title COVER LETTER 
+        .input-container
+          input.user-input( type="text" placeholder="James" v-model="firstName" :class="{ 'input-border-empty-field': firstNameFieldIsEmpty }" )
+          .empty-field-notice( v-if="firstNameFieldIsEmpty" ) Ops, you forgot about this one
+      .user-input-container
+        span.input-title LAST NAME 
         span.requried-field *
-        .attach-cover-letter-button Attach
-        .empty-field-notice( v-if="coverLetterIsEmpty" ) Hmmm, no Cover Letter!
+        .input-container
+          input.user-input( type="text" placeholder="Tangerin" v-model="lastName" :class="{ 'input-border-empty-field': lastNameFieldIsEmpty }" )
+          .empty-field-notice( v-if="lastNameFieldIsEmpty" ) Ops, you forgot about this one
+      .user-input-container
+        span.input-title EMAIL 
+        span.requried-field *
+        .input-container
+          input.user-input( type="text" placeholder="james@hotmail.com" v-model="email" @keypress="isEmailValid" :class="{ 'input-border-empty-field': emailFieldIsEmpty }" )
+          .empty-field-notice( v-if="emailFieldIsEmpty" ) Dude, the Email can't be empty
+          .empty-field-notice( v-if="shouldShowValidationError" ) Email Adress is not valid
+      .user-input-container
+        span.input-title PHONE 
+        span.requried-field *
+        .input-container
+          input.user-input( type="text" placeholder="(123)543-344-236" v-model="phoneNumber" @keypress="validatePhoneNumber" :class="{ 'input-border-empty-field': phoneFieldIsEmpty }" )
+          .empty-field-notice( v-if="phoneFieldIsEmpty" ) Hey, we need that phone number
+      .user-input-container
+        span.input-title LOCATION (CITY) 
+        span.requried-field *
+        .input-container
+          input.user-input-location( type="text" placeholder="Virgin Islands" v-model="location" :class="{ 'input-border-empty-field': locationFieldIsEmpty }" )
+          .empty-field-notice( v-if="locationFieldIsEmpty" ) Where do you live?
 
-        
-  .submit-application-container
-    .submit-application-button( @click="submitApplication" :disabled="submitButtonShouldBeDisabled" ) Submit
-        
+      .attatch-files-container
+        .resume-cv-button
+          input( type="file" )
+          span.cv-button-title RESUME/CV 
+          span.requried-field *
+          .attach-cv-button Attach
+          .empty-field-notice( v-if="rsumeFieldIsEmpty" ) Hmmm, no CV!
+
+
+        .resume-cv-button
+          input( type="file" )
+          span.cv-button-title COVER LETTER 
+          span.requried-field *
+          .attach-cover-letter-button Attach
+          .empty-field-notice( v-if="coverLetterIsEmpty" ) Hmmm, no Cover Letter!
+
+
+    .submit-application-container
+      .submit-application-button( @click="submitApplication" :disabled="submitButtonShouldBeDisabled" ) Submit
+
      
 
 </template>
