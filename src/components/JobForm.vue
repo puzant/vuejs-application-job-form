@@ -22,7 +22,7 @@
       span.input-title EMAIL 
       span.requried-field *
       .input-container
-        input.user-input( type="text" placeholder="james@hotmail.com" v-model="email" :class="{ 'input-border-empty-field': emailFieldIsEmpty }" )
+        input.user-input( type="text" placeholder="james@hotmail.com" v-model="email" @keypress="isEmailValid" :class="{ 'input-border-empty-field': emailFieldIsEmpty }" )
         .empty-field-notice( v-if="emailFieldIsEmpty" ) Dude, the Email can't be empty
         .empty-field-notice( v-if="shouldShowValidationError" ) Email Adress is not valid
     .user-input-container
