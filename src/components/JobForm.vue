@@ -148,12 +148,12 @@ export default class JobForm extends Vue {
 
 <style lang="sass">
 .apply-job-dialog
-  height: 657px
+  height: 627px
   width: 765px
   box-shadow: 0px 0px 192px -49px rgba(0,0,0,0.75)
   padding: 30px
   border-radius: 8px
-  margin: 10px auto
+  margin: 15px auto
   
 .apply-job-title-and-close-button
   display: flex
@@ -247,7 +247,7 @@ export default class JobForm extends Vue {
   
 .submit-application-container
   position: absolute
-  bottom: -24px
+  bottom: 0
   right: 330px
 .submit-application-button
   background-color: #000
@@ -288,6 +288,7 @@ input[type="file"]
 @media only screen and (max-width: 890px) 
   .apply-job-dialog
     width: auto
+    height: auto
   .user-enter-data-container
     display: flex 
     flex-direction: column
