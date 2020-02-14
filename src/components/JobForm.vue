@@ -29,7 +29,7 @@
       span.input-title PHONE 
       span.requried-field *
       .input-container
-        input.user-input( type="text" placeholder="(123)543-344-236" v-model="phoneNumber" :class="{ 'input-border-empty-field': phoneFieldIsEmpty }" )
+        input.user-input( type="text" placeholder="(123)543-344-236" v-model="phoneNumber" @keypress="validatePhoneNumber" :class="{ 'input-border-empty-field': phoneFieldIsEmpty }" )
         .empty-field-notice( v-if="phoneFieldIsEmpty" ) Hey, we need that phone number
     .user-input-container
       span.input-title LOCATION (CITY) 
@@ -69,7 +69,7 @@ export default class JobForm extends Vue {
   firstName = null
   lastName = null
   email = null || ""
-  phoneNumber = null
+  phoneNumber = null || ""
   location = null
   showForm = true
   firstNameFieldIsEmpty = false
@@ -134,6 +134,12 @@ export default class JobForm extends Vue {
 
   isEmailValid() {
     this.emailRegex.test(this.email) ? this.shouldShowValidationError = false : this.shouldShowValidationError = true
+  }
+
+  validatePhoneNumber(evt: any) {
+    if (evt.keyCode !== 46 && (evt.keyCode < 48 || evt.keyCode > 57) || this.phoneNumber.length > 15) {
+      evt.preventDefault()
+    }
   }
 
 }
