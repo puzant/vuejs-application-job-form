@@ -41,7 +41,7 @@ transition( name="fade" )
 
       .attatch-files-container
         .resume-cv-button
-          input( type="file" )
+          input( type="file" @change="handleFileUpload" )
           span.cv-button-title RESUME/CV 
           span.requried-field *
           .attach-cv-button Attach
@@ -64,6 +64,7 @@ transition( name="fade" )
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import axios from 'axios'
 
 @Component
 export default class JobForm extends Vue {
@@ -85,6 +86,8 @@ export default class JobForm extends Vue {
   submitButtonShouldBeDisabled = false
   emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   shouldShowValidationError = false
+  resumeFile = null 
+  coverLetterFile = null
 
 
 
@@ -106,7 +109,6 @@ export default class JobForm extends Vue {
       if(!this.resumeNotUploaded) this.rsumeFieldIsEmpty = true
       if(!this.coverLetterNotUploaded) this.coverLetterIsEmpty = true
       if(!this.firstName || !this.lastName || !this.email || !this.phoneNumber || !this.location) this.submitButtonShouldBeDisabled = true
-
 
     }
   }
@@ -154,6 +156,10 @@ export default class JobForm extends Vue {
     if (evt.keyCode !== 46 && (evt.keyCode < 48 || evt.keyCode > 57) || this.phoneNumber.length > 15) {
       evt.preventDefault()
     }
+  }
+
+  handleFileUpload(e: any) {
+    // this.resumeFile = e.target.files[0]  
   }
 
 }
