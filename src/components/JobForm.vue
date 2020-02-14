@@ -96,6 +96,7 @@ export default class JobForm extends Vue {
   submitApplication() {
     if( this.firstName && this.lastName && this.email && this.phoneNumber && this.location ) {
       //  do axios request here
+      this.submitDataToServer()
     } else {
       if(!this.firstName) this.firstNameFieldIsEmpty = true
       if(!this.lastName) this.lastNameFieldIsEmpty = true
