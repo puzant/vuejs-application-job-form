@@ -89,7 +89,9 @@ export default class JobForm extends Vue {
   resumeFile = null 
   coverLetterFile = null
 
-
+  created() {
+    fetch("/api/test-route").then(res => res.json()).then(json => console.log(json))
+  }
 
   mounted() {
     this.addListeneres()
@@ -114,7 +116,7 @@ export default class JobForm extends Vue {
   }
 
   submitDataToServer() {
-    axios.post('https://some url goes here', {
+    axios.post('/api/submit-application', {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
