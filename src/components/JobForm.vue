@@ -248,6 +248,7 @@ export default class JobForm extends Vue {
   margin-top: 20px
   position: relative
   overflow: hidden
+  width: 50%
   
 .cv-button-title
   color: #36393f
@@ -259,6 +260,7 @@ export default class JobForm extends Vue {
   margin-top: 7px
   background-color: #000
   color: #fff
+  width: 40%
   height: 50px
   border-radius: 3px
   transition: .2s ease-out
@@ -271,6 +273,7 @@ export default class JobForm extends Vue {
     
   
 .attatch-files-container
+  margin-top: 10px
   display: flex
   justify-content: space-between
   width: 70%
