@@ -3,6 +3,18 @@
 ![project-image](src/assets/prev-1.png)
 ![project-image](src/assets/prev-2.png)
 
+## Technologies Used
+1. Vuejs Framework 
+2. SASS preprocessor 
+3. PUG template engine 
+4. TypeScript
+
+## Additional features
+- Media queries to make the for more responsive 
+- Animation & transition for the form
+- Axios request with mock server to test the payload 
+- files upload & attachments (resume & cover letter files)
+
 ## Project setup
 ```
 npm install
