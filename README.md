@@ -1,8 +1,5 @@
 # job-application-form
 
-![project-image](src/assets/prev-1.png)
-![project-image](src/assets/prev-2.png)
-
 ## Technologies Used
 1. Vuejs Framework 
 2. SASS preprocessor 
@@ -42,3 +39,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+![project-image](src/assets/prev-1.png)
+![project-image](src/assets/prev-2.png)
