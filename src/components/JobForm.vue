@@ -41,18 +41,20 @@ transition( name="fade" )
 
       .attatch-files-container
         .resume-cv-button
-          input( type="file" @change="handleFileUpload" )
+          input( type="file" @change="handleResumeUpload" )
           span.cv-button-title RESUME/CV 
           span.requried-field *
           .attach-cv-button Attach
+          .resume-file-name( v-if="resumeFile" ) {{resumeFile.name}}
           .empty-field-notice( v-if="rsumeFieldIsEmpty" ) Hmmm, no CV!
 
 
         .resume-cv-button
-          input( type="file" )
+          input( type="file" @change="handleCoverLetterUpload" )
           span.cv-button-title COVER LETTER 
           span.requried-field *
           .attach-cover-letter-button Attach
+          .resume-file-name( v-if="coverLetterFile" ) {{coverLetterFile.name}}
           .empty-field-notice( v-if="coverLetterIsEmpty" ) Hmmm, no Cover Letter!
 
 
@@ -66,7 +68,7 @@ transition( name="fade" )
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import axios from 'axios'
 
-@Component
+@Component({})
 export default class JobForm extends Vue {
   firstName = null
   lastName = null
@@ -79,8 +81,6 @@ export default class JobForm extends Vue {
   emailFieldIsEmpty = false
   phoneFieldIsEmpty = false
   locationFieldIsEmpty = false
-  resumeNotUploaded = null
-  coverLetterNotUploaded = null
   rsumeFieldIsEmpty = false
   coverLetterIsEmpty = false
   submitButtonShouldBeDisabled = false
@@ -106,8 +106,8 @@ export default class JobForm extends Vue {
       if(!this.email) this.emailFieldIsEmpty = true
       if(!this.phoneNumber) this.phoneFieldIsEmpty = true
       if(!this.location) this.locationFieldIsEmpty = true
-      if(!this.resumeNotUploaded) this.rsumeFieldIsEmpty = true
-      if(!this.coverLetterNotUploaded) this.coverLetterIsEmpty = true
+      if(!this.resumeFile) this.rsumeFieldIsEmpty = true
+      if(!this.coverLetterFile) this.coverLetterIsEmpty = true
       if(!this.firstName || !this.lastName || !this.email || !this.phoneNumber || !this.location) this.submitButtonShouldBeDisabled = true
 
     }
@@ -119,7 +119,9 @@ export default class JobForm extends Vue {
       lastName: this.lastName,
       email: this.email,
       location: this.location,
-      phoneNumber: this.phoneNumber
+      phoneNumber: this.phoneNumber,
+      resume: this.resumeFile,
+      coverLetter: this.coverLetterFile
     }).then(response => {
       console.log('done')
     }).catch(e => {
@@ -158,8 +160,17 @@ export default class JobForm extends Vue {
     }
   }
 
-  handleFileUpload(e: any) {
-    // this.resumeFile = e.target.files[0]  
+  handleResumeUpload(e: any) {
+    let file  = e.target.files || e.dataTransfer.files
+    if(!file.length) return;
+    this.resumeFile = file[0]
+
+  }
+
+  handleCoverLetterUpload(e: any) {
+    let file  = e.target.files || e.dataTransfer.files
+    if(!file.length) return;
+    this.coverLetterFile = file[0]
   }
 
 }
