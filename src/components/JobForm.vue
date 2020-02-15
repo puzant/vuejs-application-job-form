@@ -54,7 +54,7 @@ transition( name="fade" )
           span.cv-button-title COVER LETTER 
           span.requried-field *
           .attach-cover-letter-button Attach
-          .resume-file-name( v-if="coverLetterFile" ) {{coverLetterFile.name}}
+          .cover-letter-file-name( v-if="coverLetterFile" ) {{coverLetterFile.name}}
           .empty-field-notice( v-if="coverLetterIsEmpty" ) Hmmm, no Cover Letter!
 
 
@@ -316,6 +316,14 @@ input[type="file"]
   padding: 20px
   &:hover 
     cursor: pointer
+
+.cover-letter-file-name,
+.resume-file-name
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  margin-top: 5px
+  width: 150px
 
 //  media queries to make the form responsive 
 @media only screen and (max-width: 890px) 
