@@ -120,9 +120,12 @@ export default class JobForm extends Vue {
       location: this.location,
       phoneNumber: this.phoneNumber,
       resume: this.resumeFile,
-      coverLetter: this.coverLetterFile
+      coverLetter: this.coverLetterFile,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
     }).then(response => {
-      console.log('done')
+      (this as any).$swal("Good job!", "Your application is on it's way!", "success")
     }).catch(e => {
       console.log('there was an error')
     })
