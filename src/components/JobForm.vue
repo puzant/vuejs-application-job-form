@@ -348,6 +348,14 @@ input[type="file"]
     width: 100%
     flex-direction: row
     justify-content: space-around
+  
+  .submit-application-container
+    position: absolute
+    left: 266px
+    top: 617px
+
+  .submit-application-button
+    width: 75px
 
 //  animations 
 .fade-enter-active, .fade-leave-active 
