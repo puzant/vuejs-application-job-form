@@ -163,14 +163,14 @@ export default class JobForm extends Vue {
   }
 
   handleResumeUpload(e: any) {
-    let file  = e.target.files || e.dataTransfer.files
+    let file  = e.target.files
     if(!file.length) return;
     this.resumeFile = file[0]
 
   }
 
   handleCoverLetterUpload(e: any) {
-    let file  = e.target.files || e.dataTransfer.files
+    let file  = e.target.files
     if(!file.length) return;
     this.coverLetterFile = file[0]
   }
