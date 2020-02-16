@@ -21,6 +21,13 @@ export function makeServer({ environment = 'development' } = {}) {
       this.post('/submit-application', (req, res) => {
         return 'application recivied'
       })
+      
+      this.post('/submit-application', (schema, request) => {
+        let application = JSON.parse(request.requestBody)
+        return new Response (
+          200, {some: 'header'}, {msg: 'application recived successfully'}
+        )
+      }, {timing: 4000} )
 
     }
   })
