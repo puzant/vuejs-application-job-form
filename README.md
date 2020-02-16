@@ -5,6 +5,8 @@
 2. SASS preprocessor 
 3. PUG template engine 
 4. TypeScript
+5. MirageJs (for mocking API calls)
+6. Sweet alert (for success messages)
 
 ## Additional features
 - Media queries to make the for more responsive 
