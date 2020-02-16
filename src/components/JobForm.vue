@@ -89,9 +89,6 @@ export default class JobForm extends Vue {
   resumeFile = null 
   coverLetterFile = null
 
-  created() {
-    fetch("/api/test-route").then(res => res.json()).then(json => console.log(json))
-  }
 
   mounted() {
     this.addListeneres()
